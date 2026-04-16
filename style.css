@@ -1,0 +1,102 @@
+﻿body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+
+   background-color: #12063c;
+}
+/*
+#track {
+    width: 80%;
+    height: 100px;
+    border-bottom: 4px solid #333;
+    position: relative;
+    background: #4f0505;
+    overflow: hidden;
+    border-radius: 10px;
+}
+*/
+#runner {
+    width: 70px;
+    height: 70px;
+    font-size: 125px;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    transition: left 0.1s linear, bottom 0.2s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    margin-bottom: 100px;
+
+
+}
+
+   
+    #runner.jumping {
+        bottom: 80px;
+    }
+
+#stats {
+    margin-bottom: 300px;
+    font-size: 50px;
+    text-align: center;
+}
+
+    .obstacle-style {
+        width: 50px;
+        height: 50px;
+        font-size: 100px;
+        position: absolute;
+        bottom: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-bottom: 100px;
+    }
+
+
+
+    #obsticale {
+        left: 75%;
+    }
+
+    #niga {
+        left: 60%;
+    }
+
+    #idk {
+        right: 8%;
+    }
+    #something{
+left: 35%;
+    }
+#karin {
+    left: 46%;
+}
+#yusi {
+    left: 22%;
+}
+#coshi {
+    left: 10%;
+}
+
+    #message {
+        font-weight: bold;
+        margin-top: 20px;
+        font-size: 30px;
+        height: 40px;
+    }
+#restart {
+    font-weight: bold;
+    margin-bottom: 300px;
+    font-size: 30px;
+    height: 40px;
+}
+
