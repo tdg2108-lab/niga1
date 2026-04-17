@@ -1,9 +1,13 @@
-﻿
+
 let distance = 0;
-let timeLeft = 5.5;
+let timeLeft = 5.0;
 let gameActive = false;
 let timerId = null;
+let score = 0;
 
+
+
+const scoreEl = document.getElementById('score'); 
 const runner = document.getElementById('runner');
 const distanceEl = document.getElementById('distance');
 const timerEl = document.getElementById('timer');
@@ -27,6 +31,7 @@ window.addEventListener('keydown', (event) => {
     if (event.code === 'Space' && gameActive) {
         jump();
     }
+    
 
 });
 
@@ -48,28 +53,15 @@ function startGame() {
 
 function moveForward() {
     if (!gameActive) return;
+
     distance += 0.1;
-    if (distance > 3) distance = 3;
-    distanceEl.innerText = distance.toFixed(1);
-
-    const position = (distance / 3) * 95;
-    runner.style.left = position + '%';
-    checkCollision();
-
-    if (distance >= 3) {
-        endGame(true);
-    }
-}
-
-function jump() {
-    if (runner.classList.contains('jumping')) return;
-    runner.classList.add('jumping');
+    if (distance > 3) distance = 3; 
     setTimeout(() => {
         runner.classList.remove('jumping');
     }, 600);
 }
 
-// פונקציית עזר לבדיקת חפיפה בין שני אלמנטים
+
 function isOverlapping(rect1, rect2) {
     return (
         rect1.left < rect2.right &&
@@ -108,17 +100,22 @@ function checkCollision() {
 
 
 function endGame(isWin, msg) {
+    if (!gameActive) return;
     gameActive = false;
     clearInterval(timerId);
+
     if (isWin) {
         messageEl.innerText = "ניצחת!! 🏆";
-        messa.color = "lime";
+        messageEl.style.color = "lime";
+
+        
+        addPoints(5);
+
     } else {
         messageEl.innerText = msg;
         messageEl.style.color = "#ff4d4d";
     }
-}
-function restartGame()  {
+} function restartGame()  {
     clearInterval(timerId);
 
 
@@ -139,3 +136,19 @@ function restartGame()  {
     messageEl.innerText = "לחץ ENTER כדי להתחיל";
     messageEl.style.color = "white";
 }
+
+function addPoints(amount) {
+   
+    score = score + amount;
+
+    
+    const element = document.getElementById('score');
+    element.innerText = score;
+
+
+    if (runner.style.left === '100%') {
+        ;addPoints(5)
+
+    }
+}
+
